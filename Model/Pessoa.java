@@ -9,7 +9,8 @@ public abstract class Pessoa {
 	//CONTRUTOR
 	Pessoa(){}
 	
-	Pessoa(String _nome, int _cpf, int _telefone, String _email){
+	Pessoa(int _id, String _nome, int _cpf, int _telefone, String _email){
+		id = _id;
 		nome = _nome;
 		cpf = _cpf;
 		telefone = _telefone;

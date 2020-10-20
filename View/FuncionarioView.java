@@ -30,9 +30,8 @@ public class FuncionarioView {
 			  telefone = leitor.nextInt();
 			  System.out.print("Email:");
 			  email = leitor.next();
-			  Funcionario f = new Funcionario (nome, cpf, telefone, email);
-			  
-			  //codigo++;
+			  id = listFuncionario.size() + 1;
+			  Funcionario f = new Funcionario (id, nome, cpf, telefone, email);
 		    break;
 		  case 'a':
 			  System.out.println("====== Alterar Funcionario ======");

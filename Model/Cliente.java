@@ -10,7 +10,8 @@ public class Cliente extends Pessoa {
 	Cliente(){}
 	
 	//CONTRUTOR
-	Cliente(String _nome, 
+	Cliente(int _id,
+			String _nome, 
 			int _cpf, 
 			int _telefone, 
 			String _email,
@@ -20,7 +21,7 @@ public class Cliente extends Pessoa {
 			String _estadoCivil,
 			String _situacao) 
 	{
-		super(_nome, _cpf, _telefone, _email);
+		super(_id, _nome, _cpf, _telefone, _email);
 		endereco = _endereco;
 		dataNascimento = _dataNascimento;
 		sexo = _sexo;

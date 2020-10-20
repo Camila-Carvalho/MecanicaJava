@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 	
-	char opcao;
+	//int opcao;
 	
 	Scanner leitor = new Scanner(System.in);
 	FuncionarioView fView = new FuncionarioView();
@@ -16,7 +16,7 @@ public class Menu {
 		System.out.println("(2) Novo Atendimento");
 		System.out.println("(3) Consultar Atendimentos");
 		System.out.println("(4) Relatórios");
-		opcao = leitor.next().charAt(0);
+		int opcao = leitor.nextInt();
 		switch(opcao) {
 		case 1:
 			menuCadastro();
@@ -30,7 +30,7 @@ public class Menu {
 		System.out.println("(1) Cadastro Funcionario");
 		System.out.println("(2) Cadastro Cliente");
 		System.out.println("(3) Cadastro Servico");
-		opcao = leitor.next().charAt(0);
+		int opcao = leitor.nextInt();
 		switch(opcao) {
 		case 1:
 			menuFuncionario();
@@ -53,7 +53,7 @@ public class Menu {
 		System.out.println("(c) Consultar");
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
-		opcao = leitor.next().charAt(0);
+		char opcao = leitor.next().charAt(0);
 		fView.retornaView(opcao);
 	}
 	
@@ -64,7 +64,7 @@ public class Menu {
 			System.out.println("(c) Consultar");
 			System.out.println("(a) Alterar");
 			System.out.println("(e) Excluir");
-			opcao = leitor.next().charAt(0);
+			char opcao = leitor.next().charAt(0);
 			cView.retornaView(opcao);
 		}
 		
@@ -75,7 +75,7 @@ public class Menu {
 		System.out.println("(c) Consultar");
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
-		opcao = leitor.next().charAt(0);
+		char opcao = leitor.next().charAt(0);
 		sView.retornaView(opcao);
 	}
 	
