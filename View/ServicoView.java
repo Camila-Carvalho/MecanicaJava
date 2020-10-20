@@ -22,9 +22,9 @@ public class ServicoView {
 		  case 'i':
 			  System.out.print("Descricao:");
 			  descricao = leitor.next();
-			  Servico s = new Servico ();
-			  
-			  //codigo++;
+			  id = listServico.size() + 1;
+			  Servico s = new Servico (id, descricao);
+			  listServico.add(s);
 		    break;
 		  case 'a':
 			  System.out.println("====== Alterar Servico ======");

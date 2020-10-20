@@ -54,6 +54,7 @@ public class ClienteView {
 			  	situacao = leitor.next();
 			  	id = listCliente.size() + 1;
 			  	Cliente c = new Cliente (id, nome, cpf, telefone, email, endereco, dataNascimento, sexo, estadoCivil, situacao);
+			  	listCliente.add(c);
 			  }
 			  catch (Exception ex) {
 				  ex.printStackTrace();
