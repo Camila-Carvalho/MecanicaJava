@@ -4,22 +4,20 @@ import java.util.Scanner;
 public class FuncionarioView {
 	char opcao;
 	
-	ArrayList<Funcionario> listFuncionario = new ArrayList(); //"BD"
 	Scanner leitor = new Scanner(System.in);
 	//Scanner leitorString = new Scanner(System.in);
 	
 	//instancia funcionario
-	Funcionario funcionario = new Funcionario();
+	//Funcionario funcionario = new Funcionario();
 	
 	//variaveis auxiliares	
-	private int id;
 	private String nome;
 	private String cpf;
 	private String telefone;
 	private String email;
 	
 	
-	void retornaView(char opcao) {		
+	void retornaView(char opcao, ArrayList<Funcionario> listFuncionario) {		
 		System.out.println("===== CADASTRAR FUNCIONARIO =====");
 		switch (opcao) {
 		  case 'i':

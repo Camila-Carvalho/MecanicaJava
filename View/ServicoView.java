@@ -5,18 +5,17 @@ import java.util.Scanner;
 public class ServicoView {
 	char opcao;
 	
-	ArrayList<Servico> listServico = new ArrayList(); //"BD"
 	Scanner leitor = new Scanner(System.in);
 	
 	//instancia servico
-	Servico servico = new Servico();
+	//Servico servico = new Servico();
 	
 	//variaveis auxiliares	
 	private int id;
 	private String descricao;
 	
 	
-	void retornaView(char opcao) {		
+	void retornaView(char opcao, ArrayList<Servico> listServico) {		
 		System.out.println("===== Cadastrar Servico =====");
 		switch (opcao) {
 		  case 'i':

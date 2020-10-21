@@ -8,14 +8,12 @@ import java.util.Scanner;
 public class ClienteView {
 	char opcao;
 	
-	ArrayList<Cliente> listCliente = new ArrayList(); //"BD"
 	Scanner leitor = new Scanner(System.in);
 	
 	//instancia cliente
-	Cliente cliente = new Cliente();
+	//Cliente cliente = new Cliente();
 	
 	//variaveis auxiliares	
-	private int id;
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -27,7 +25,7 @@ public class ClienteView {
 	private String situacao;
 	
 	
-	void retornaView(char opcao) {		
+	void retornaView(char opcao, ArrayList<Cliente> listCliente) {		
 		System.out.println("===== Cadastrar Cliente =====");
 		switch (opcao) {
 		  case 'i':

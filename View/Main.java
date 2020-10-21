@@ -1,8 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu {
+public class Main {
 
 	// int opcao;
+	ArrayList<Funcionario> listFuncionario = new ArrayList(); //"BD"
+	ArrayList<Servico> listServico = new ArrayList(); //"BD"
+	ArrayList<Cliente> listCliente = new ArrayList(); //"BD"
 
 	Scanner leitor = new Scanner(System.in);
 	FuncionarioView fView = new FuncionarioView();
@@ -75,7 +79,7 @@ public class Menu {
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
 		char opcao = leitor.next().charAt(0);
-		fView.retornaView(opcao);
+		fView.retornaView(opcao, listFuncionario);
 	}
 
 	// MENU CLIENTE
@@ -87,7 +91,7 @@ public class Menu {
 		System.out.println("(e) Excluir (Inativar)");
 		System.out.println("(r) Reativar");
 		char opcao = leitor.next().charAt(0);
-		cView.retornaView(opcao);
+		cView.retornaView(opcao, listCliente);
 	}
 
 	// MENU SERVICO
@@ -98,7 +102,7 @@ public class Menu {
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
 		char opcao = leitor.next().charAt(0);
-		sView.retornaView(opcao);
+		sView.retornaView(opcao, listServico);
 	}
 
 }
