@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Servico implements Comparable<Servico> {
-	int id;
-	String descricao;
+	private int id;
+	private String descricao;
 
 	// CONSTRUTOR
 	Servico() {
@@ -23,6 +23,18 @@ public class Servico implements Comparable<Servico> {
 
 	public int getId() {
 		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

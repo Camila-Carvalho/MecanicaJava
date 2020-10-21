@@ -1,20 +1,12 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ServicoView {
-	//char opcao;
-
 	Scanner leitor = new Scanner(System.in);
-
-	// instancia servico
-	// Servico servico = new Servico();
-
 	// variaveis auxiliares
-	private int id;
 	private String descricao;
 
-	void retornaView(char opcao, ArrayList<Servico> listServico) {
+	void view(char opcao, ArrayList<Servico> listServico) {
 		switch (opcao) {
 		case 'i':
 			System.out.println("===== Cadastrar Servico =====");
@@ -30,7 +22,7 @@ public class ServicoView {
 			System.out.print("Código: ");
 			int codigoBusca = leitor.nextInt();
 			for (Servico servico : listServico) {
-				if (servico.id == codigoBusca) {
+				if (servico.getId() == codigoBusca) {
 					sAux = servico;
 				}
 				;
@@ -39,7 +31,8 @@ public class ServicoView {
 			char op = leitor.next().charAt(0);
 			if (op == 's' || op == 'S') {
 				System.out.print("Nova descricao:");
-				sAux.descricao = leitor.next();
+				String novaDescricao = leitor.nextLine();
+				sAux.setDescricao(novaDescricao);
 			}
 			break;
 		case 'c':
@@ -47,9 +40,9 @@ public class ServicoView {
 			System.out.print("Código: ");
 			codigoBusca = leitor.nextInt();
 			for (Servico servico : listServico) {
-				if (servico.id == codigoBusca) {
+				if (servico.getId() == codigoBusca) {
 					System.out.println("=== Dados Servico ===");
-					System.out.println(servico.id + "|" + servico.descricao);
+					System.out.println(servico.getId() + " | " + servico.getDescricao());
 					System.out.println("====================");
 				}
 			}
@@ -59,7 +52,7 @@ public class ServicoView {
 			System.out.print("Código: ");
 			codigoBusca = leitor.nextInt();
 			for (Servico servico : listServico) {
-				if (servico.id == codigoBusca) {
+				if (servico.getId() == codigoBusca) {
 					listServico.remove(servico);
 				}
 				;

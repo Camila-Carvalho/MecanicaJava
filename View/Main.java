@@ -4,15 +4,18 @@ import java.util.Scanner;
 public class Main {
 
 	// int opcao;
-	ArrayList<Funcionario> listFuncionario = new ArrayList(); //"BD"
-	ArrayList<Servico> listServico = new ArrayList(); //"BD"
-	ArrayList<Cliente> listCliente = new ArrayList(); //"BD"
+	ArrayList<Funcionario> listFuncionario = new ArrayList<Funcionario>(); //"BD"
+	ArrayList<Servico> listServico = new ArrayList<Servico>(); //"BD"
+	ArrayList<Cliente> listCliente = new ArrayList<Cliente>(); //"BD"
+	ArrayList<Atendimento> listAtendimento = new ArrayList<Atendimento>(); //"BD"
 
 	Scanner leitor = new Scanner(System.in);
 	FuncionarioView fView = new FuncionarioView();
 	ClienteView cView = new ClienteView();
 	ServicoView sView = new ServicoView();
-
+	RelatoriosView rView = new RelatoriosView();
+	
+	
 	// MENU PRINCIPAL
 	public void menuPrincipal() {
 		int opcao = 0;
@@ -37,7 +40,7 @@ public class Main {
 				// consultarAtendimentos();
 				break;
 			case 4:
-				// relatorios();
+				menuRelatorios();
 				break;
 			case 5:
 				System.out.println("====== PROGRAMA FINALIZADO ======");
@@ -79,7 +82,7 @@ public class Main {
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
 		char opcao = leitor.next().charAt(0);
-		fView.retornaView(opcao, listFuncionario);
+		fView.view(opcao, listFuncionario);
 	}
 
 	// MENU CLIENTE
@@ -91,7 +94,7 @@ public class Main {
 		System.out.println("(e) Excluir (Inativar)");
 		System.out.println("(r) Reativar");
 		char opcao = leitor.next().charAt(0);
-		cView.retornaView(opcao, listCliente);
+		cView.view(opcao, listCliente);
 	}
 
 	// MENU SERVICO
@@ -102,7 +105,20 @@ public class Main {
 		System.out.println("(a) Alterar");
 		System.out.println("(e) Excluir");
 		char opcao = leitor.next().charAt(0);
-		sView.retornaView(opcao, listServico);
+		sView.view(opcao, listServico);
 	}
+	
+	// MENU RELATORIOS
+	public void menuRelatorios() {
+			System.out.println("====== MENU RELATORIOS ======");
+			System.out.println("(1) Clientes");
+			System.out.println("(2) Clientes por situação");
+			System.out.println("(3) Serviços");
+			System.out.println("(4) Funcionarios");
+			System.out.println("(5) Agenda");
+			System.out.println("(6) Serviços por cliente");
+			int opcao = leitor.nextInt();
+			rView.view(opcao, listCliente, listFuncionario, listServico, listAtendimento);
+		}
 
 }

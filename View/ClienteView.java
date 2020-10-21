@@ -2,12 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClienteView {
-	//char opcao;
-
 	Scanner leitor = new Scanner(System.in);
-
-	// instancia cliente
-	// Cliente cliente = new Cliente();
 
 	// variaveis auxiliares
 	private String nome;
@@ -18,9 +13,8 @@ public class ClienteView {
 	private String dataNascimento;
 	private char sexo;
 	private String estadoCivil;
-	private String situacao;
 
-	void retornaView(char opcao, ArrayList<Cliente> listCliente) {
+	void view(char opcao, ArrayList<Cliente> listCliente) {
 		switch (opcao) {
 		case 'i':
 			System.out.println("===== Cadastrar Cliente =====");
@@ -36,17 +30,12 @@ public class ClienteView {
 				System.out.print("Endereco:");
 				endereco = leitor.nextLine();
 				System.out.print("Data Nascimento:");
-				// String dataNasc = leitor.nextLine();
-				// DateFormat dataForm = new SimpleDateFormat("dd/MM/yyyy");// formatar a data
-				// dataNascimento = dataForm.parse(dataNasc);
 				dataNascimento = leitor.nextLine();
 				System.out.print("Sexo: (F)feminino (M)masculino");
 				sexo = leitor.nextLine().charAt(0);
 				System.out.print("Estado civil:");
 				estadoCivil = leitor.nextLine();
-				// System.out.print("Situacao:");
-				// situacao = leitor.nextLine();
-				// id = listCliente.size() + 1;
+				
 				Cliente c = new Cliente(nome, cpf, telefone, email, endereco, dataNascimento, sexo, estadoCivil,
 						listCliente);
 				listCliente.add(c);
@@ -60,7 +49,7 @@ public class ClienteView {
 			System.out.print("Código: ");
 			int codigoBusca = leitor.nextInt();
 			for (Cliente cliente : listCliente) {
-				if (cliente.id == codigoBusca) {
+				if (cliente.getId() == codigoBusca) {
 					cAux = cliente;
 				}
 				;
@@ -69,7 +58,8 @@ public class ClienteView {
 			char op = leitor.next().charAt(0);
 			if (op == 's' || op == 'S') {
 				System.out.print("Novo Nome/Razao Social:");
-				cAux.nome = leitor.next();
+				String novoNome = leitor.nextLine();
+				cAux.setNome(novoNome);
 			}
 			break;
 		case 'c':
@@ -78,8 +68,8 @@ public class ClienteView {
 			codigoBusca = leitor.nextInt();
 			for (Cliente cliente : listCliente) {
 				if (cliente.id == codigoBusca) {
-					System.out.println("=== Dados Funcionario ===");
-					System.out.println(cliente.id + "|" + cliente.nome + "|" + cliente.cpf);
+					System.out.println("=== Dados Cliente ===");
+					System.out.println(cliente.getId() + " | " + cliente.getNome() + " | " + cliente.getCpf());
 					System.out.println("====================");
 				}
 			}

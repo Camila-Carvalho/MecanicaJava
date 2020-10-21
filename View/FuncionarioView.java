@@ -2,13 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FuncionarioView {
-	//char opcao;
-	
 	Scanner leitor = new Scanner(System.in);
-	//Scanner leitorString = new Scanner(System.in);
-	
-	//instancia funcionario
-	//Funcionario funcionario = new Funcionario();
 	
 	//variaveis auxiliares	
 	private String nome;
@@ -17,7 +11,7 @@ public class FuncionarioView {
 	private String email;
 	
 	
-	void retornaView(char opcao, ArrayList<Funcionario> listFuncionario) {		
+	void view(char opcao, ArrayList<Funcionario> listFuncionario) {		
 		switch (opcao) {
 		  case 'i':
 			  System.out.println("===== Cadastrar Funcionario =====");
@@ -29,7 +23,6 @@ public class FuncionarioView {
 			  telefone = leitor.nextLine();
 			  System.out.print("Email:");
 			  email = leitor.nextLine();
-			  //id = listFuncionario.size() + 1;
 			  Funcionario f = new Funcionario (nome, cpf, telefone, email, listFuncionario);
 			  listFuncionario.add(f);
 		    break;
@@ -47,7 +40,8 @@ public class FuncionarioView {
 			  char op = leitor.next().charAt(0);
 			  if(op == 's' || op == 'S') {					  
 				  System.out.print("Novo Nome/Razao Social:");
-				  fAux.nome = leitor.next();
+				  String novoNome = leitor.nextLine();
+				  fAux.setNome(novoNome);
 			  }
 		    break;
 		  case 'c':
@@ -55,9 +49,9 @@ public class FuncionarioView {
 			  System.out.print("Código: ");
 			  codigoBusca = leitor.nextInt();
 			  for(Funcionario funcionario :listFuncionario) {
-					if(funcionario.id == codigoBusca) {
+					if(funcionario.getId() == codigoBusca) {
 						System.out.println("=== Dados Funcionario ===");
-						System.out.println(funcionario.id + "|" + funcionario.nome + "|" + funcionario.cpf);
+						System.out.println(funcionario.getId() + " | " + funcionario.getNome() + " | " + funcionario.getCpf());
 						System.out.println("====================");
 					}
 				}
@@ -67,7 +61,7 @@ public class FuncionarioView {
 			  System.out.print("Código: ");
 			  codigoBusca = leitor.nextInt();
 			  for(Funcionario funcionario :listFuncionario) {		
-				  if(funcionario.id == codigoBusca){
+				  if(funcionario.getId() == codigoBusca){
 					  listFuncionario.remove(funcionario);
 				  };
 			  }
