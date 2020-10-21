@@ -6,6 +6,7 @@ public class FuncionarioView {
 	
 	ArrayList<Funcionario> listFuncionario = new ArrayList(); //"BD"
 	Scanner leitor = new Scanner(System.in);
+	//Scanner leitorString = new Scanner(System.in);
 	
 	//instancia funcionario
 	Funcionario funcionario = new Funcionario();
@@ -13,8 +14,8 @@ public class FuncionarioView {
 	//variaveis auxiliares	
 	private int id;
 	private String nome;
-	private int cpf;
-	private int telefone;
+	private String cpf;
+	private String telefone;
 	private String email;
 	
 	
@@ -23,15 +24,15 @@ public class FuncionarioView {
 		switch (opcao) {
 		  case 'i':
 			  System.out.print("Nome:");
-			  nome = leitor.next();
+			  nome = leitor.nextLine();
 			  System.out.print("CPF:");
-			  cpf = leitor.nextInt();
+			  cpf = leitor.nextLine();
 			  System.out.print("Telefone:");
-			  telefone = leitor.nextInt();
+			  telefone = leitor.nextLine();
 			  System.out.print("Email:");
-			  email = leitor.next();
-			  id = listFuncionario.size() + 1;
-			  Funcionario f = new Funcionario (id, nome, cpf, telefone, email);
+			  email = leitor.nextLine();
+			  //id = listFuncionario.size() + 1;
+			  Funcionario f = new Funcionario (nome, cpf, telefone, email, listFuncionario);
 			  listFuncionario.add(f);
 		    break;
 		  case 'a':

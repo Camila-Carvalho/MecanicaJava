@@ -2,18 +2,21 @@
 public abstract class Pessoa {
 	protected int id;
 	protected String nome;
-	protected int cpf;
-	protected int telefone;
+	protected String cpf;
+	protected String telefone;
 	protected String email;
 	
 	//CONTRUTOR
 	Pessoa(){}
 	
-	Pessoa(int _id, String _nome, int _cpf, int _telefone, String _email){
-		id = _id;
+	Pessoa(String _nome, String _cpf, String _telefone, String _email){
 		nome = _nome;
 		cpf = _cpf;
 		telefone = _telefone;
 		email = _email;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }

@@ -17,11 +17,11 @@ public class ClienteView {
 	//variaveis auxiliares	
 	private int id;
 	private String nome;
-	private int cpf;
-	private int telefone;
+	private String cpf;
+	private String telefone;
 	private String email;
 	private String endereco;
-	private Date dataNascimento;
+	private String dataNascimento;
 	private char sexo;
 	private String estadoCivil;
 	private String situacao;
@@ -33,27 +33,28 @@ public class ClienteView {
 		  case 'i':
 			  try {
 				System.out.print("Nome:");
-			  	nome = leitor.next();
+			  	nome = leitor.nextLine();
 			  	System.out.print("CPF:");
-			  	cpf = leitor.nextInt();
+			  	cpf = leitor.nextLine();
 			  	System.out.print("Telefone:");
-			  	telefone = leitor.nextInt();
+			  	telefone = leitor.nextLine();
 			  	System.out.print("Email:");
-			  	email = leitor.next();
+			  	email = leitor.nextLine();
 			  	System.out.print("Endereco:");
-			  	endereco = leitor.next();
+			  	endereco = leitor.nextLine();
 			  	System.out.print("Data Nascimento:");
-			  	String dataNasc = leitor.next();
-			  	DateFormat dataForm = new SimpleDateFormat("dd/MM/yyyy");// formatar a data
-			  	dataNascimento = dataForm.parse(dataNasc);
+			  	//String dataNasc = leitor.nextLine();
+			  	//DateFormat dataForm = new SimpleDateFormat("dd/MM/yyyy");// formatar a data
+			  	//dataNascimento = dataForm.parse(dataNasc);
+			  	dataNascimento = leitor.nextLine();
 			  	System.out.print("Sexo: (F)feminino (M)masculino");
-			  	sexo = leitor.next().charAt(0);
+			  	sexo = leitor.nextLine().charAt(0);
 			  	System.out.print("Estado civil:");
-			  	estadoCivil = leitor.next();
-			  	System.out.print("Situacao:");
-			  	situacao = leitor.next();
-			  	id = listCliente.size() + 1;
-			  	Cliente c = new Cliente (id, nome, cpf, telefone, email, endereco, dataNascimento, sexo, estadoCivil, situacao);
+			  	estadoCivil = leitor.nextLine();
+			  	//System.out.print("Situacao:");
+			  	//situacao = leitor.nextLine();
+			  	//id = listCliente.size() + 1;
+			  	Cliente c = new Cliente (nome, cpf, telefone, email, endereco, dataNascimento, sexo, estadoCivil, listCliente);
 			  	listCliente.add(c);
 			  }
 			  catch (Exception ex) {
@@ -90,15 +91,26 @@ public class ClienteView {
 				}
 			break;
 		  case 'e':
-			  System.out.println("====== Excluir Cliente ======");
+			  System.out.println("====== Inativar Cliente ======");
 			  System.out.print("Código: ");
 			  codigoBusca = leitor.nextInt();
 			  for(Cliente cliente :listCliente) {		
 				  if(cliente.id == codigoBusca){
-					  listCliente.remove(cliente);
+					  cliente.InativarCliente();
+					  System.out.println("!!! Cliente Inativado com Sucesso !!!");
 				  };
 			  }
-			  //System.out.println("==================");	
+			break;
+		  case 'r':
+			  System.out.println("====== Reativar Cliente ======");
+			  System.out.print("Código: ");
+			  codigoBusca = leitor.nextInt();
+			  for(Cliente cliente :listCliente) {		
+				  if(cliente.id == codigoBusca){
+					  cliente.AtivarCliente();
+					  System.out.println("!!! Cliente Reativado com Sucesso !!!");
+				  };
+			  }
 			break;
 		  default:
 			  System.out.println("Valor informado inválido!");

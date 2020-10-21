@@ -21,9 +21,9 @@ public class ServicoView {
 		switch (opcao) {
 		  case 'i':
 			  System.out.print("Descricao:");
-			  descricao = leitor.next();
-			  id = listServico.size() + 1;
-			  Servico s = new Servico (id, descricao);
+			  descricao = leitor.nextLine();
+			  //id = listServico.size() + 1;
+			  Servico s = new Servico (descricao, listServico);
 			  listServico.add(s);
 		    break;
 		  case 'a':
