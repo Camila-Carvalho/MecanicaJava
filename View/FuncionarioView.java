@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FuncionarioView {
-	char opcao;
+	//char opcao;
 	
 	Scanner leitor = new Scanner(System.in);
 	//Scanner leitorString = new Scanner(System.in);
@@ -18,9 +18,9 @@ public class FuncionarioView {
 	
 	
 	void retornaView(char opcao, ArrayList<Funcionario> listFuncionario) {		
-		System.out.println("===== CADASTRAR FUNCIONARIO =====");
 		switch (opcao) {
 		  case 'i':
+			  System.out.println("===== Cadastrar Funcionario =====");
 			  System.out.print("Nome:");
 			  nome = leitor.nextLine();
 			  System.out.print("CPF:");
