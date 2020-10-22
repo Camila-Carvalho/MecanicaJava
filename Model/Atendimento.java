@@ -11,10 +11,11 @@ public class Atendimento implements Comparable<Atendimento> {
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Servico servico;
+	private Veiculo veiculo;
 	private String status;
 	private String descricao;
-
-	public Atendimento(int ano, int mes, int dia, int hora, Funcionario funcionario, Cliente cliente, Servico servico,
+	
+	public Atendimento(int ano, int mes, int dia, int hora, Funcionario funcionario, Cliente cliente, Servico servico, Veiculo veiculo,
 			String status, String descricao, ArrayList<Atendimento> todosAtendimentos) {
 		this.ano = ano;
 		this.mes = mes;
@@ -24,6 +25,7 @@ public class Atendimento implements Comparable<Atendimento> {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.servico = servico;
+		this.veiculo = veiculo;
 		this.status = status;
 		this.descricao = descricao;
 
@@ -34,6 +36,16 @@ public class Atendimento implements Comparable<Atendimento> {
 		}
 
 	}
+	
+	private Atendimento(int ano, int mes, int dia, int hora) {
+		this.ano = ano;
+		this.mes = mes;
+		this.dia = dia;
+		this.horaInicio = hora;
+		this.horaFim = hora + 2;
+	}
+	
+	private Atendimento() {}
 
 	public int getCodigo() {
 		return codigo;
@@ -82,6 +94,14 @@ public class Atendimento implements Comparable<Atendimento> {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -121,6 +141,61 @@ public class Atendimento implements Comparable<Atendimento> {
 
 	public void setHoraFim(int horaFim) {
 		this.horaFim = horaFim;
+	}
+	
+	public void UpdateAtendimento(Atendimento atendimento, ArrayList<Atendimento> todosAtendimentos) {
+		Atendimento a = this.getById(atendimento.codigo, todosAtendimentos);
+		a.setAno(atendimento.ano);
+		a.setMes(atendimento.mes);
+		a.setDia(atendimento.dia);
+		a.setHoraInicio(atendimento.horaInicio);
+		a.setFuncionario(atendimento.funcionario);
+		a.setCliente(atendimento.cliente);
+		a.setServico(atendimento.servico);
+		a.setVeiculo(atendimento.veiculo);
+		a.setDescricao(atendimento.descricao);
+		a.setStatus(atendimento.status);
+	}
+	
+	public Atendimento getById(int idBusca, ArrayList<Atendimento> todosAtendimentos){
+		Atendimento atendimento = new Atendimento();
+		for(Atendimento a : todosAtendimentos) {
+			if(a.codigo == idBusca) {
+				atendimento = a;
+			}
+		}
+		return atendimento;
+	}
+	
+	public Atendimento getAtendimentoByData(int ano, int mes, int dia, int hora, ArrayList<Atendimento> todosAtendimentos) {
+		Atendimento atendimento = new Atendimento(ano, mes, dia, hora);
+		for(Atendimento a : todosAtendimentos) {
+			if(a.ano == ano && a.mes == mes && a.dia == dia && a.horaInicio == hora) {
+				atendimento = a;
+			}
+			else {
+				atendimento = null;
+			}
+		}
+		return atendimento;
+	}
+	
+	public void excluiAtendimento(int ano, int mes, int dia, int hora, ArrayList<Atendimento> todosAtendimentos) {
+		for(Atendimento a : todosAtendimentos) {
+			if(a.ano == ano && a.mes == mes && a.dia == dia && a.horaInicio == hora) {
+				todosAtendimentos.remove(a);
+			}
+		}
+	}
+	
+	public boolean verificaAtendimento(int ano, int mes, int dia, int hora, ArrayList<Atendimento> todosAtendimentos) {
+		boolean x = false;
+		for(Atendimento a : todosAtendimentos) {
+			if(a.ano == ano && a.mes == mes && a.dia == dia && a.horaInicio == hora) {
+				x = true;
+			}
+		}
+		return x;
 	}
 
 	@Override

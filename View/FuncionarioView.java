@@ -39,7 +39,7 @@ public class FuncionarioView {
 			  System.out.print("Altera nome (s)Sim (n)Nao ");
 			  char op = leitor.next().charAt(0);
 			  if(op == 's' || op == 'S') {					  
-				  System.out.print("Novo Nome/Razao Social:");
+				  System.out.print("Novo Nome:");
 				  String novoNome = leitor.nextLine();
 				  fAux.setNome(novoNome);
 			  }

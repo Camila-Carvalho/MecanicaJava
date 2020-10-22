@@ -80,6 +80,16 @@ public class Cliente extends Pessoa implements Comparable<Cliente> {
 		this.situacao = situacao;
 	}
 
+	public Cliente getById(int idBusca, ArrayList<Cliente> todosClientes){
+		Cliente cliente = new Cliente();
+		for(Cliente c : todosClientes) {
+			if(c.id == idBusca) {
+				cliente = c;
+			}
+		}
+		return cliente;
+	}
+	
 	@Override
 	public int compareTo(Cliente o) {
 		if (this.getId() > o.getId()) {

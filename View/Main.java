@@ -7,6 +7,7 @@ public class Main {
 	ArrayList<Funcionario> listFuncionario = new ArrayList<Funcionario>(); //"BD"
 	ArrayList<Servico> listServico = new ArrayList<Servico>(); //"BD"
 	ArrayList<Cliente> listCliente = new ArrayList<Cliente>(); //"BD"
+	ArrayList<Veiculo> listVeiculo = new ArrayList<Veiculo>(); //"BD"
 	ArrayList<Atendimento> listAtendimento = new ArrayList<Atendimento>(); //"BD"
 
 	Scanner leitor = new Scanner(System.in);
@@ -14,7 +15,7 @@ public class Main {
 	ClienteView cView = new ClienteView();
 	ServicoView sView = new ServicoView();
 	RelatoriosView rView = new RelatoriosView();
-	
+	AtendimentoView aView = new AtendimentoView();
 	
 	// MENU PRINCIPAL
 	public void menuPrincipal() {
@@ -34,7 +35,7 @@ public class Main {
 				menuCadastro();
 				break;
 			case 2:
-				// novoAtendimento();
+				aView.view('i', listAtendimento, listCliente, listFuncionario, listServico, listVeiculo);
 				break;
 			case 3:
 				// consultarAtendimentos();
@@ -118,7 +119,7 @@ public class Main {
 			System.out.println("(5) Agenda");
 			System.out.println("(6) Serviços por cliente");
 			int opcao = leitor.nextInt();
-			rView.view(opcao, listCliente, listFuncionario, listServico, listAtendimento);
+			rView.view(opcao, listCliente, listFuncionario, listServico, listVeiculo, listAtendimento);
 		}
 
 }

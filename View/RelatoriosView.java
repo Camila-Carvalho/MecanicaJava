@@ -6,7 +6,7 @@ public class RelatoriosView {
 	Scanner leitor = new Scanner(System.in);
 	
 	void view(int opcao, ArrayList<Cliente> listCliente, ArrayList<Funcionario> listFuncionario,
-			ArrayList<Servico> listServico, ArrayList<Atendimento> listAtendimento) {
+			ArrayList<Servico> listServico, ArrayList<Veiculo> listVeiculo, ArrayList<Atendimento> listAtendimento) {
 		switch (opcao) {
 		case 1:
 			System.out.println("===== Relatório Clientes =====");
@@ -88,6 +88,9 @@ public class RelatoriosView {
 			System.out.println("====== Relatório Agenda ======");
 			break;
 		case 6:
+			System.out.println("====== Relatório Agenda ======");
+			break;
+		case 7:
 			System.out.println("====== Relatório Serviços por cliente ======");
 			break;
 		default:

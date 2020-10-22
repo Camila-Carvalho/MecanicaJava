@@ -36,6 +36,16 @@ public class Servico implements Comparable<Servico> {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public Servico getById(int idBusca, ArrayList<Servico> todosServicos){
+		Servico servico = new Servico();
+		for(Servico s : todosServicos) {
+			if(s.id == idBusca) {
+				servico = s;
+			}
+		}
+		return servico;
+	}
 
 	@Override
 	public int compareTo(Servico o) {
