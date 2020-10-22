@@ -18,16 +18,6 @@ public class Funcionario extends Pessoa implements Comparable<Funcionario> {
 		}
 
 	}
-
-	public Funcionario getById(int idBusca, ArrayList<Funcionario> todosFuncionarios){
-		Funcionario funcionario = new Funcionario();
-		for(Funcionario f : todosFuncionarios) {
-			if(f.id == idBusca) {
-				funcionario = f;
-			}
-		}
-		return funcionario;
-	}
 	
 	@Override
 	public int compareTo(Funcionario o) {

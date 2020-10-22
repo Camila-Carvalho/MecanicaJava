@@ -12,7 +12,6 @@ public class ServicoView {
 			System.out.println("===== Cadastrar Servico =====");
 			System.out.print("Descricao:");
 			descricao = leitor.nextLine();
-			// id = listServico.size() + 1;
 			Servico s = new Servico(descricao, listServico);
 			listServico.add(s);
 			break;

@@ -3,14 +3,14 @@ import java.util.Collections;
 
 public class Veiculo implements Comparable<Veiculo> {
 	private int id;
-	private String placa;
+	private String tipo;
 
 	// CONSTRUTOR
 	Veiculo() {
 	}
 
-	Veiculo(String placa, ArrayList<Veiculo> todosVeiculos) {
-		this.placa = placa;
+	Veiculo(String tipo, ArrayList<Veiculo> todosVeiculos) {
+		this.tipo = tipo;
 
 		this.id = 1;
 
@@ -29,27 +29,14 @@ public class Veiculo implements Comparable<Veiculo> {
 		this.id = id;
 	}
 	
-	public String getPlaca() {
-		return placa;
+	public String getTipo() {
+		return tipo;
 	}
 	
-	public void setPlaca(String placa) {
-		this.placa = placa;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
-	public Veiculo getById(int idBusca, ArrayList<Veiculo> todosVeiculos){
-		Veiculo veiculo = new Veiculo();
-		for(Veiculo v : todosVeiculos) {
-			if(v.id == idBusca) {
-				veiculo = v;
-			}
-			else {
-				veiculo = null;
-			}
-		}
-		return veiculo;
-	}
-
 	@Override
 	public int compareTo(Veiculo o) {
 		if (this.getId() > o.getId()) {

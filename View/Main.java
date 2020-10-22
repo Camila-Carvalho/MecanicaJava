@@ -14,6 +14,7 @@ public class Main {
 	FuncionarioView fView = new FuncionarioView();
 	ClienteView cView = new ClienteView();
 	ServicoView sView = new ServicoView();
+	VeiculoView vView = new VeiculoView();
 	RelatoriosView rView = new RelatoriosView();
 	AtendimentoView aView = new AtendimentoView();
 	
@@ -23,11 +24,10 @@ public class Main {
 
 		do {
 			System.out.println("====== MENU OFICINA ======");
-			System.out.println("(1) Cadastrar"); // cadastrar pessoa/funcionario/serviço
-			System.out.println("(2) Novo Atendimento");
-			System.out.println("(3) Consultar Atendimentos");
-			System.out.println("(4) Relatórios");
-			System.out.println("(5) Sair");
+			System.out.println("(1) Cadastrar"); // cadastrar pessoa/funcionario/serviço/veiculo
+			System.out.println("(2) Atendimento");
+			System.out.println("(3) Relatórios");
+			System.out.println("(4) Sair");
 
 			opcao = leitor.nextInt();
 			switch (opcao) {
@@ -35,15 +35,12 @@ public class Main {
 				menuCadastro();
 				break;
 			case 2:
-				aView.view('i', listAtendimento, listCliente, listFuncionario, listServico, listVeiculo);
+				menuAtendimento();
 				break;
 			case 3:
-				// consultarAtendimentos();
-				break;
-			case 4:
 				menuRelatorios();
 				break;
-			case 5:
+			case 4:
 				System.out.println("====== PROGRAMA FINALIZADO ======");
 				break;
 			default:
@@ -59,6 +56,7 @@ public class Main {
 		System.out.println("(1) Cadastro Funcionario");
 		System.out.println("(2) Cadastro Cliente");
 		System.out.println("(3) Cadastro Servico");
+		System.out.println("(4) Cadastro Veiculo");
 		int opcao = leitor.nextInt();
 		switch (opcao) {
 		case 1:
@@ -69,6 +67,9 @@ public class Main {
 			break;
 		case 3:
 			menuServico();
+			break;
+		case 4:
+			menuVeiculo();
 			break;
 		default:
 			System.out.println("******* Valor informado inválido! *******");
@@ -107,6 +108,25 @@ public class Main {
 		System.out.println("(e) Excluir");
 		char opcao = leitor.next().charAt(0);
 		sView.view(opcao, listServico);
+	}
+	
+	// MENU SERVICO
+	public void menuVeiculo() {
+		System.out.println("====== MENU VEICULOS ======");
+		System.out.println("(i) Incluir");
+		char opcao = leitor.next().charAt(0);
+		vView.view(opcao, listVeiculo);
+	}
+	
+	// MENU ATENDIMENTO
+	public void menuAtendimento() {
+		System.out.println("====== MENU ATENDIMENTO ======");
+		System.out.println("(i) Incluir");
+		System.out.println("(c) Consultar");
+		System.out.println("(a) Alterar");
+		System.out.println("(e) Excluir");
+		char opcao = leitor.next().charAt(0);
+		aView.view(opcao, listAtendimento, listCliente, listFuncionario, listServico, listVeiculo);
 	}
 	
 	// MENU RELATORIOS

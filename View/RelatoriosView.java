@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 public class RelatoriosView {
 	Scanner leitor = new Scanner(System.in);
-	
+
 	void view(int opcao, ArrayList<Cliente> listCliente, ArrayList<Funcionario> listFuncionario,
 			ArrayList<Servico> listServico, ArrayList<Veiculo> listVeiculo, ArrayList<Atendimento> listAtendimento) {
 		switch (opcao) {
@@ -26,11 +26,13 @@ public class RelatoriosView {
 			break;
 		case 2:
 			System.out.println("====== Relatório Clientes por situação ======");
-			
-			ArrayList<Cliente> listClientesAtivos = (ArrayList<Cliente>) listCliente.stream().filter(cliente -> cliente.getSituacao().equals("Ativo")).collect(Collectors.toList());
-			ArrayList<Cliente> listClientesInativos = (ArrayList<Cliente>) listCliente.stream().filter(cliente -> cliente.getSituacao().equals("Inativo")).collect(Collectors.toList());
-			
-			if(listClientesAtivos.size() > 0) {
+
+			ArrayList<Cliente> listClientesAtivos = (ArrayList<Cliente>) listCliente.stream()
+					.filter(cliente -> cliente.getSituacao().equals("Ativo")).collect(Collectors.toList());
+			ArrayList<Cliente> listClientesInativos = (ArrayList<Cliente>) listCliente.stream()
+					.filter(cliente -> cliente.getSituacao().equals("Inativo")).collect(Collectors.toList());
+
+			if (listClientesAtivos.size() > 0) {
 				System.out.println("====== CLIENTES ATIVOS ======");
 				for (Cliente cliente : listClientesAtivos) {
 					System.out.println("Código: " + cliente.getId());
@@ -46,8 +48,8 @@ public class RelatoriosView {
 					System.out.println("--------------------------------");
 				}
 			}
-			
-			if(listClientesInativos.size() > 0) {
+
+			if (listClientesInativos.size() > 0) {
 				System.out.println("====== CLIENTES INATIVOS ======");
 				for (Cliente cliente : listClientesInativos) {
 					System.out.println("Código: " + cliente.getId());
@@ -63,7 +65,7 @@ public class RelatoriosView {
 					System.out.println("--------------------------------");
 				}
 			}
-	
+
 			break;
 		case 3:
 			System.out.println("====== Relatório Serviços ======");
@@ -86,12 +88,42 @@ public class RelatoriosView {
 			break;
 		case 5:
 			System.out.println("====== Relatório Agenda ======");
+			System.out.print("Informe a data: DD/MM/AAAA");
+			String data = leitor.nextLine();
+			String spDataConsulta[] = data.split("/");
+			int dia = Integer.parseInt(spDataConsulta[0]);
+			int mes = Integer.parseInt(spDataConsulta[1]);
+			int ano = Integer.parseInt(spDataConsulta[2]);
+			ArrayList<Atendimento> listAtendimentoDia = (ArrayList<Atendimento>) listAtendimento.stream()
+					.filter(atendimento -> atendimento.getAno() == ano && atendimento.getMes() == mes
+							&& atendimento.getDia() == dia)
+					.collect(Collectors.toList());
+
+			System.out.println("====== Agenda do dia " + data + " ======");
+			for (Atendimento atendimento : listAtendimentoDia) {
+				System.out.println("Cliente: " + atendimento.getCliente().getNome());
+				System.out.println("Contato do cliente: " + atendimento.getCliente().getTelefone() + " | "
+						+ atendimento.getCliente().getEmail());
+				System.out.println("Funcionario: " + atendimento.getFuncionario().getNome());
+				System.out.println("Serviço: " + atendimento.getServico().getId() + " | "
+						+ atendimento.getServico().getDescricao());
+				System.out.println("Tipo do veiculo: " + atendimento.getVeiculo().getTipo());
+				System.out.println("Hora do início: " + atendimento.getHoraFim());
+				System.out.println("Status: " + atendimento.getStatus());
+				System.out.println("Descrição: " + atendimento.getDescricao());
+				System.out.println("===============================");
+			}
 			break;
 		case 6:
-			System.out.println("====== Relatório Agenda ======");
+			System.out.println("====== Relatório Serviços por cliente ======");
 			break;
 		case 7:
-			System.out.println("====== Relatório Serviços por cliente ======");
+			System.out.println("====== Relatório Veiculos ======");
+			for (Veiculo veiculo : listVeiculo) {
+				System.out.println("Código: " + veiculo.getId());
+				System.out.println("Tipo: " + veiculo.getTipo());
+				System.out.println("===============================");
+			}
 			break;
 		default:
 			System.out.println("Valor informado inválido!");
