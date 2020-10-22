@@ -27,7 +27,8 @@ public class Main {
 			System.out.println("(1) Cadastrar"); // cadastrar pessoa/funcionario/serviço/veiculo
 			System.out.println("(2) Atendimento");
 			System.out.println("(3) Relatórios");
-			System.out.println("(4) Sair");
+			System.out.println("(4) Agenda");
+			System.out.println("(5) Sair");
 
 			opcao = leitor.nextInt();
 			switch (opcao) {
@@ -41,6 +42,9 @@ public class Main {
 				menuRelatorios();
 				break;
 			case 4:
+				rView.view(5, listCliente, listFuncionario, listServico, listVeiculo, listAtendimento);
+				break;
+			case 5:
 				System.out.println("====== PROGRAMA FINALIZADO ======");
 				break;
 			default:
@@ -138,6 +142,7 @@ public class Main {
 			System.out.println("(4) Funcionarios");
 			System.out.println("(5) Agenda");
 			System.out.println("(6) Serviços por cliente");
+			System.out.println("(7) Veiculos");
 			int opcao = leitor.nextInt();
 			rView.view(opcao, listCliente, listFuncionario, listServico, listVeiculo, listAtendimento);
 		}
